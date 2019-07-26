@@ -44,7 +44,7 @@ for K=[5 12 75]
     y = sign(w'*Xtest+b);
     correct = sum( y == ytest);
     misclassified = sum( y ~= ytest);
-    percent_misclass = 100 * misclassified / length(y);
+    pecent_misclass = 100 * misclassified / length(y);
 
     false_pos = 0;
     false_neg = 0;
@@ -58,15 +58,8 @@ for K=[5 12 75]
         end
     end
     fprintf('============ K = %d ==============\n\n', K);
-    fprintf('Misclassified: %f %%\n', percent_misclass);
-    fprintf('False Positive: %d, False Negative: %d\n',...
-        false_pos, false_neg);
-    disp('Solution w =');
-    disp(w);
-    disp('Solution b =');
-    disp(b);
-    disp('Function value at solution:');
-    disp(fs);
+    fprintf('Misclassified: %f %%, False Positive: %d, False Negative: %d\n',...
+        misclassified,false_pos, false_neg); 
 
 end
 

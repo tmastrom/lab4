@@ -8,25 +8,17 @@ xk = x0;
 gk = feval(gname,xk);
 dk = -gk;
 ak = bt_lsearch(xk,dk,fname,gname);
-adk = ak*dk;    
+adk = ak*dk;
 er = norm(adk);
-
-i = 1;
-
-while i < epsi,
+while k < epsi,
   xk = xk + adk;
   gk = feval(gname,xk);
   dk = -gk;
   ak = bt_lsearch(xk,dk,fname,gname);
   adk = ak*dk;
   er = norm(adk);
-  k = k + 1;
-  i = i + 1;
+  k = k + 1;  
 end
-disp('solution:')
-xs = xk + adk
-disp('objective function at solution point:')
-fs = feval(fname,xs)
-format short
-disp('number of iterations performed:')
-k
+
+xs = xk + adk;
+fs = feval(fname,xs);

@@ -1,15 +1,15 @@
 function g = gradient (w)
 
-ytrain = importdata("ytrain.mat");
-Xtrain = importdata("Xtrain.mat");
-Xtrain = [Xtrain; ones(1,480)];
-
+global Xhat;
+global ytrain;
+global N;
 % exponential
-N = 480;
+
 tot = 0;
 
 for i=1:N
-    curr = ytrain(i)*exp(-ytrain(i)*w'*Xtrain(:,i))/(1+exp(-ytrain(i)*w'*Xtrain(:,i)));
+    a = exp(-ytrain(i)*w'*Xhat(:,i));
+    curr = Xhat(:,i)*ytrain(i)*a/(1+a);
     tot = tot + curr;
 end
 
